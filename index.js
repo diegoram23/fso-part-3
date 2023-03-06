@@ -45,14 +45,11 @@ app.get('/api/persons/:id', (request, response) => {
         ? response.json(person) : response.status(404).end()
 })
 
-// app.get('/api/notes/:id', (request, response) => {
-//     const id = Number(request.params.id)
-//     const note = notes.find(note => note.id === id)
-//     response.json(note)
-//     note ? response.json(note) : response.status(404).end()
-// })
-
-
+app.delete('/api/persons/:id', (request, response) => {
+    const id = Number(request.params.id)
+    persons = persons.filter(person => id !== person.id)
+    response.status(204).end()
+})
 
 const PORT = 3001
 app.listen(PORT, () => {
