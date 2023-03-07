@@ -54,9 +54,18 @@ const generateId = () => {
 
 app.post('/api/persons', (request, response) => {
     const body = request.body
-    if (!body.name) {
+    if (!body.name || !body.number) {
         return response.status(400).json({
-            error: 'Name missing'
+            error: 'Name or number is missing'
+        })
+    }
+
+    const duplicate = persons.find(person =>
+        person.name.toLowerCase() === body.name.toLowerCase())
+
+    if (duplicate) {
+        return response.status(400).json({
+            error: 'User already exists'
         })
     }
 

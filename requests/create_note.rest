@@ -1,7 +1,8 @@
-POST http://localhost:3001/api/notes
+
+POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "content": "vs code is great",
-    "important": true
+    "name": "dreGo",
+    "number": "356 35345345"
 }
